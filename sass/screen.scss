@@ -1,0 +1,341 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+
+
+/* GLOBAL
+-------------------------------------------------------------- */
+$headerFamily : 'Muli', sans-serif;
+$bodyFamily : Arial, Helvetica, sans-serif;
+$teal : #1ea094;
+$red : #ad1724;
+$white : #ffffff;
+
+
+
+body {
+	font-family: $bodyFamily;
+	background: black url('../images/bg.jpg') no-repeat top left;
+	background-size: cover;
+}
+
+h1, h2, h3, h4, h5,h6 {
+	font-weight: normal;
+	font-family: $headerFamily;
+	margin: 0;
+	padding: 0;
+	@include box-sizing(border-box);
+}
+
+h2 {
+	font-size: 40px;
+	line-height: 1.3em;
+}
+a {
+	font-weight: normal;
+	font-size: 20px;
+	color: $red;
+	display: block;
+	&:hover, &:focus {
+		color: $white;
+	}
+}
+p {
+	line-height: 1.6em;
+	font-size: 15px;
+	font-weight: normal;
+	strong {
+		font-size: 20px;
+	}
+}
+form {
+	input[type="email"] {
+		color: $red;
+		font-weight: bold;
+		border: 4px solid $red;
+		background: transparent;
+		height: 50px;
+		width: 200px;
+		margin: 0;
+		padding: 0 10px;
+		display: inline-block;
+		margin-right: 0px;
+		vertical-align: top;
+		font-size: 14px;
+		@include box-sizing(border-box);
+		-webkit-appearance:none;
+	}
+	input[type="submit"] {
+		border: none;
+		height: 50px;
+		margin: 0;
+		padding: 0 15px;
+		color: $white;
+		font-size: 16px;
+		background-color: $red;
+		border: 4px solid $red;
+		cursor: pointer;
+		display: inline-block;
+		vertical-align: top;
+		@include box-sizing(border-box);
+		-webkit-appearance:none;
+		&:hover, &:focus {
+			background: transparent;
+			border-color: $white;
+			color: $white;
+		}
+	}
+}
+::-webkit-input-placeholder {
+   color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: white;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+}
+
+:-ms-input-placeholder {
+   color: white;
+}
+textarea:focus, input:focus{
+    outline: 0;
+}
+img { max-width: 100%; }
+.submit {
+	border: 3px solid $teal;
+	color: $teal;
+	font-size: 13px;
+	padding: 10px;
+	margin: 10px 0px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	font-weight: bold;
+}
+
+
+
+/* SECTIONS
+-------------------------------------------------------------- */
+section {
+
+	text-align: center;
+	padding: 40px 0;
+
+	// Widths Controls
+	.column {
+		width: 400px;
+		margin: 0 auto;
+		@include box-sizing(border-box);
+	}
+
+	// Section 1
+	&.clearGreen {
+		color: $teal;
+		border-bottom: 4px solid $teal;
+		padding-top: 30px;
+
+		#featuredBox {
+			height: 336px;
+			margin: 0 auto 35px;
+			border: 4px solid #1ea094;
+			@include transition(width .5s ease-out);
+			@include box-sizing(border-box);
+			&.logo {
+				width: 336px;
+				line-height: 365px;
+				#video {
+					display: none;
+					iframe {
+						opacity: 0;
+					}
+				}
+			}
+			&.video {
+				width: 583px;
+				#video {
+					width: 100%;
+					height: 100%;
+					display: block;
+					padding: 1%;
+					@include box-sizing(border-box);
+					iframe {
+						border: 0;
+						width: 100%;
+						height: 100%;
+						opacity: 0;
+						@include transition(opacity .5s ease-in);
+						&.active {
+							opacity: 1;
+						}
+					}
+				}
+				#title {
+					display: none;
+				}
+			}
+		}
+
+		h2 { margin-bottom: 20px; }
+		a { margin-bottom: 35px;	}
+		p { margin-bottom: 15px;	}
+
+	}
+
+	// Section 2
+	&.whiteBlack {
+		background: white;
+		border-bottom: 4px solid $teal;
+
+		#animationBox {
+			background: white;
+			display: block;
+			padding: 20px;
+			margin-bottom: 30px;
+			#animationContainer {
+				position: relative;
+				display: inline-block;
+				img {
+					position: relative;
+					z-index: 1;
+					margin: 0;
+					padding: 0;
+					display: block;
+				}
+				#leftWifi {
+					position: absolute;
+					z-index: 2;
+					top: 0;
+					left: 0;
+					display: block;
+					&.float {
+						-webkit-animation: floatingL 1s infinite linear;
+						-moz-animation:  floatingL 1s infinite linear;
+						-ms-animation:  floatingL 1s infinite linear;
+						-o-animation:  floatingL 1s infinite linear;
+					}
+				}
+				#rightWifi {
+					position: absolute;
+					z-index: 2;
+					top: 0;
+					left: 0;
+					display: block;
+					&.float {
+						-webkit-animation: floatingR 1s infinite linear;
+						-moz-animation: floatingR 1s infinite linear;
+						-ms-animation: floatingR 1s infinite linear;
+						-o-animation: floatingR 1s infinite linear;
+					}
+				}
+				#growUp {
+					position: absolute;
+					z-index: 0;
+					display: block;
+					width: 50%;
+					left: 0;
+					right: 50%;
+					bottom: 0px;
+					height: 0%;
+					background: $teal;
+					@include transition(height 4s ease-in);
+					&.active {
+						height: 100%;
+					}
+				}
+				#growRight {
+					position: absolute;
+					z-index: 0;
+					display: block;
+					left: 50%;
+					right: 0;
+					bottom: 0px;
+					height: 100%;
+					width: 0%;
+					background: $teal;
+					@include transition(width 4s ease-in);
+					&.active {
+						width: 50%;
+					}
+				}
+			}
+		}
+
+		h2 { margin-bottom: 20px; }
+		a { margin-bottom: 35px;	}
+		p {
+			margin-bottom: 15px;
+			strong {
+				font-size: 17px;
+				font-weight: bold;
+			}
+		}
+	}
+
+	// Section 3
+	&.clearWhite {
+		color: $white;
+
+		h2 { margin-bottom: 20px; }
+		p { margin-bottom: 25px; }
+		a { margin-bottom: 20px;	}
+	}
+
+}
+
+// Footer
+footer {
+	text-align: center;
+	padding-bottom: 20px;
+
+	#social { margin-bottom: 30px; }
+	p {
+		font-size: 12px;
+		color: $white;
+	}
+}
+
+
+/* MQ
+-------------------------------------------------------------- */
+@media only screen and (max-width : 600px) {
+
+	section.clearGreen #featuredBox.video,
+	section .column { width: 98%;}
+	section.clearGreen #featuredBox.logo { width: 65%;}
+	section .column, h2 { width: 100%; padding: 0px 15px; }
+	h2 { font-size: 28px; }
+
+}
+
+@media only screen and (max-width : 481px) {
+
+	section.clearGreen #featuredBox.video, section .column { width: 98%;}
+	section.clearGreen #featuredBox { height: 210px; }
+	section.clearGreen #featuredBox.logo { line-height: 245px; padding: 0px 30px; }
+	form input[type="email"], form input[type="submit"] { display: block; width: 80%; margin: 0 auto; margin-bottom: 10px; padding: 0px 10px; }
+	p strong { font-size: 16px; }
+
+}
+
+
+/* CSS Animation Keyframes
+-------------------------------------------------------------- */
+@-webkit-keyframes floatingL {0%{left:0px}50%{left:5px}100%{left:0px}}
+@-moz-keyframes floatingL {0%{left:0px}50%{left:5px}100%{left:0px}}
+@-ms-keyframes floatingL {0%{left:0px}50%{left:5px}100%{left:0px}}
+@-o-keyframes floatingL {0%{left:0px}50%{left:5px}100%{left:0px}}
+@keyframes floatingL {0%{left:0px}50%{left:5px}100%{left:0px}}
+
+@-webkit-keyframes floatingR {0%{left:0px}50%{left:-5px}100%{left:0px}}
+@-moz-keyframes floatingR {0%{left:0px}50%{left:-5px}100%{left:0px}}
+@-ms-keyframes floatingR {0%{left:0px}50%{left:-5px}100%{left:0px}}
+@-o-keyframes floatingR {0%{left:0px}50%{left:-5px}100%{left:0px}}
+@keyframes floatingR {0%{left:0px}50%{left:-5px}100%{left:0px}}
